@@ -12,9 +12,14 @@ router.get('/notes', (req, res) => {
 
 router.post('/notes', (req, res) => {
     req.body.id = shortId.generate();
-    
+
     const note = createNewNotes(req.body, notes);
     res.json(note);
+});
+
+router.delete('/notes', (req, res) => {
+    console.log(req.body.id);
+    res.status(200).send('Note deleted');
 });
 
 module.exports = router;
