@@ -1,5 +1,5 @@
 const fs = require('fs');
-const {createNewNotes, readNotes, deleteNotes} = require('../lib/notes');
+const {createNewNotes, readNotes, deleteNotes, validateNote} = require('../lib/notes');
 
 jest.mock('fs');
 
@@ -63,4 +63,27 @@ test('deleted notes', () => {
     const filteredResult = result.filter(note => note.id === '2');
 
     expect(filteredResult.length).toEqual(0);
+});
+
+test('validates note', () => {
+    const note1 = {
+        text: 'Note text'
+    }
+
+    const note2 = {
+        title: 'Note title'
+    }
+
+    const note3 = {
+        title: 'Note title',
+        text: 'Note text'
+    }
+
+    const result1 = validateNote(note1);
+    const result2 = validateNote(note2);
+    const result3 = validateNote(note3);
+
+    expect(result1).toEqual(false);
+    expect(result2).toEqual(false);
+    expect(result3).toEqual(true);
 });
