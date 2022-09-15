@@ -2,7 +2,8 @@
   "notes": [
     {
       "title": "title 1",
-      "text": "text 1"
+      "text": "text 1", 
+      "id":"1"
     },
     {
       "title": "Do dishes",
