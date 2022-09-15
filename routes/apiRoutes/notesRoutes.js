@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const fs = require('fs');
 const path = require('path');
-const {createNewNotes, readNotes, deleteNotes, validateNote} = require('../../lib/notes');
+const {createNewNotes, readNotes, deleteNotes, validateNote, isFound} = require('../../lib/notes');
 const {notes} = require('../../data/db.json');
 const shortId = require('shortid');
 
@@ -22,8 +22,17 @@ router.post('/notes', (req, res) => {
 });
 
 router.delete('/notes', (req, res) => {
-    console.log(req.body.id);
-    res.status(200).send('Note deleted');
+    if(req.body.id){
+        if(isFound(req.body, notes)){
+            deleteNotes(req.body.id, notes);
+            res.status(200).send('Note deleted');
+        } else {
+            res.status(400).send('Unable to delete the requested data');
+        }
+    } else {
+        res.status(400).send('Unable to delete the requested data');
+    }
+    
 });
 
 module.exports = router;

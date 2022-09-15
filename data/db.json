@@ -2,18 +2,13 @@
   "notes": [
     {
       "title": "title 1",
-      "text": "text 1", 
-      "id":"1"
+      "text": "text 1",
+      "id": "1"
     },
     {
       "title": "Do dishes",
       "text": "I must do the dishes",
       "id": "KNAQO1-Jp"
-    },
-    {
-      "title": "Hike",
-      "text": "Go hiking",
-      "id": "FyjrZN8QY"
     }
   ]
 }
