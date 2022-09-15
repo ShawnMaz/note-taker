@@ -1,6 +1,7 @@
 {
-    "database":[
+    "notes":[
         {
+            "id":"1",
             "title":"Test title",
             "text":"test text"
         }
