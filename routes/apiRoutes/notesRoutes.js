@@ -1,12 +1,9 @@
 const router = require('express').Router();
-const fs = require('fs');
-const path = require('path');
 const {createNewNotes, readNotes, deleteNotes, validateNote, isFound} = require('../../lib/notes');
-const {notes} = require('../../data/db.json');
 const shortId = require('shortid');
 
 router.get('/notes', (req, res) => {
-    const data = readNotes(notes);
+    const data = readNotes();
     res.json(data);
 });
 
@@ -16,15 +13,14 @@ router.post('/notes', (req, res) => {
     if(!validateNote(req.body)){
         res.status(400).send('The note is not properly formatted');
     } else {
-        const note = createNewNotes(req.body, notes);
+        const note = createNewNotes(req.body);
         res.json(note);
     }    
 });
 
 router.delete('/notes/:id', (req, res) => {
-    
-    if(isFound(req.params.id, notes)){
-        deleteNotes(req.body.id, notes);
+    if(isFound(req.params.id)){
+        deleteNotes(req.params.id);
         res.status(200).send('Note deleted');
     } else {
         res.status(400).send('Unable to delete the requested data');
