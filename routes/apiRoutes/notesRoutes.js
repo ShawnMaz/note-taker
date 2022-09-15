@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const fs = require('fs');
 const path = require('path');
-const {createNewNotes, readNotes, deleteNotes} = require('../../lib/notes');
+const {createNewNotes, readNotes, deleteNotes, validateNote} = require('../../lib/notes');
 const {notes} = require('../../data/db.json');
 const shortId = require('shortid');
 
@@ -13,8 +13,12 @@ router.get('/notes', (req, res) => {
 router.post('/notes', (req, res) => {
     req.body.id = shortId.generate();
 
-    const note = createNewNotes(req.body, notes);
-    res.json(note);
+    if(!validateNote(req.body)){
+        res.status(400).send('The note is not properly formatted');
+    } else {
+        const note = createNewNotes(req.body, notes);
+        res.json(note);
+    }    
 });
 
 router.delete('/notes', (req, res) => {
