@@ -1,7 +1,8 @@
 const router = require('express').Router();
+const path = require('path');
 
 router.get('*', (req, res) => {
-    res.status(404).send('The page you are looking for could not be found!');
+    res.sendFile(path.join(__dirname, '../../public/index.html'));
 });
 
 module.exports = router;
