@@ -114,8 +114,8 @@ test('checks if an ID exists in the database', () => {
         }
     ]
 
-    const resultExist = isFound(noteExists, notesArray);
-    const resultNotExist = isFound(noteNotExist, notesArray);
+    const resultExist = isFound(noteExists.id, notesArray);
+    const resultNotExist = isFound(noteNotExist.id, notesArray);
 
     expect(resultExist).toEqual(true);
     expect(resultNotExist).toEqual(false);

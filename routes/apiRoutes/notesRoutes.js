@@ -21,14 +21,11 @@ router.post('/notes', (req, res) => {
     }    
 });
 
-router.delete('/notes', (req, res) => {
-    if(req.body.id){
-        if(isFound(req.body, notes)){
-            deleteNotes(req.body.id, notes);
-            res.status(200).send('Note deleted');
-        } else {
-            res.status(400).send('Unable to delete the requested data');
-        }
+router.delete('/notes/:id', (req, res) => {
+    
+    if(isFound(req.params.id, notes)){
+        deleteNotes(req.body.id, notes);
+        res.status(200).send('Note deleted');
     } else {
         res.status(400).send('Unable to delete the requested data');
     }
