@@ -1,9 +1,13 @@
 {
-    "notes":[
-        {
-            "id":"1",
-            "title":"Test title",
-            "text":"test text"
-        }
-    ]
+  "notes": [
+    {
+      "title": "title 1",
+      "text": "text 1"
+    },
+    {
+      "title": "Do dishes",
+      "text": "I must do the dishes",
+      "id": "KNAQO1-Jp"
+    }
+  ]
 }
